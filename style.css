@@ -4,9 +4,10 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     outline: none;
+    overflow: hidden;
 }
 
-body {
+body{
     background: url("/img/1130469.png");
     background-size: cover;
     background-position: center;
@@ -15,12 +16,14 @@ body {
 
 .container {
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255,255,255, .2);
+    backdrop-filter:blur(5px);
     width: 500px;
     border-radius: 10px;
     padding: 20px;
     margin: 100px auto 0;
+    margin-top:0%;
+
 }
 
 .input-task {
@@ -72,7 +75,8 @@ body {
     cursor: pointer;
 }
 
-.task img {
+
+.task img{
     height: 30px;
     opacity: 0; /* Apenas as imagens das tarefas começam invisíveis */
     transition: opacity 0.5s ease-in-out;
@@ -82,23 +86,22 @@ body {
     opacity: 1; /* Tornar visível ao passar o mouse */
 }
 
+
 .done {
     background-color: #0cb228;
     text-decoration: line-through;
 }
-
-.input-task::placeholder {
+.input-task::placeholder{
     font-size: 15px;
 }
+h1{
+  text-align: center ;  
+  margin-top: 50px;
+  font-size: 50px;
+  color: white;
+margin-bottom: 20px;
 
-h1 {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 50px;
-    color: white;
-    margin-bottom: 20px;
 }
-
 .logo {
     display: block;
     margin: 20px auto 0; /* Centraliza no topo */
@@ -106,23 +109,18 @@ h1 {
     height: auto; /* Mantém a proporção */
     z-index: 10;
 }
-
-::-webkit-scrollbar {
+::-webkit-scrollbar{
     width: 12px;
 }
-
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb{
     background: #0dff82ee;
     opacity: 0.9;
     border-radius: 10px;
 }
-
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track{
     background: #ffffff;
     width: 1px;
 }
-
-/* Consultas de mídia para responsividade */
 @media (max-width: 768px) {
     .container {
         width: 90%;
@@ -146,14 +144,16 @@ h1 {
     }
 
     .task {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
+        flex-direction: row; /* Mantém alinhado em linha, mesmo em telas pequenas */
         padding: 10px;
     }
 
     .task img {
-        height: 25px;
+        height: 20px;
+    }
+
+    .task p {
+        font-size: 14px; /* Fonte menor em dispositivos móveis */
     }
 
     .logo {
@@ -166,16 +166,3 @@ h1 {
     }
 }
 
-@media (max-width: 480px) {
-    .input-task {
-        font-size: 12px;
-    }
-
-    .button-add-task {
-        font-size: 15px;
-    }
-
-    h1 {
-        font-size: 30px;
-    }
-}
