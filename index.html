@@ -6,14 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="/img/Eo_circle_green_checkmark.svg.png" type="image/x-icon"
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/Eo_circle_green_checkmark.svg.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>CheckPoint</title>
 </head>
 
 <body>
-    <img class="logo" src="/logo/logo.png">
+    <header>
+        <div class="header">
+            <img class="logo" src="/logo/logo.png" alt="Logo">
+            <div class="nav-btn-container">
+                <nav class="nav">
+                    <a href="#Habitats">Estatística</a>
+                    <a href="#Animais">Notificações</a>
+                    <a href="#Sobre">Saiba mais</a>
+                </nav>
+            <div class="toggle-container">
+                <input type="checkbox" class="checkbox" id="chk" />
+                <label class="label" for="chk">
+                    <i class="fa-solid fa-moon"></i>
+                    <i class="fa-solid fa-sun"></i>
+                    <div class="ball"></div>
+                </label>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
         <input class="input-task" placeholder="O que tenho que fazer...">
         <button class="button-add-task">Adicionar</button>
@@ -24,4 +43,5 @@
     </div>
 </body>
 <script src="script.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </html>

@@ -7,23 +7,115 @@
     overflow: hidden;
 }
 
-body{
+body {
     background: url("/img/1130469.png");
     background-size: cover;
     background-position: center;
     min-height: 100vh;
+    transition: background 0.2 linear;
+    justify-content: center;
+    height: 100vh;
+}
+
+body.dark {
+    background: url(/img/wallpaperflare.com_wallpaper.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+body.dark .label {
+    background-color: #ffffff;
+}
+
+body.light .label {
+    background-color: #ffffff;
+}
+
+body.dark .label .ball {
+    background-color: #7eff5e;
+}
+
+body.light .label .ball {
+    background-color: #000000;
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    
+
+}
+
+
+.logo {
+    width: 270px;
+}
+
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    background-color: #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    position: relative;
+    height: 30px;
+    width: 60px;
+    transform: scale(1);
+    transition: background 0.2s ease;
+}
+
+.label .ball {
+    background-color: #7eff5e;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: 22px;
+    width: 22px;
+    transform: translateX(0px);
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+    transform: translateX(28px);
+}
+
+.fa-moon{
+    font-size: 20pxpx;
+    color: #7eff5e;
+    margin-right: 10px;
+
+}
+.fa-sun {
+    margin-right: 2px;
+    color: #7eff5e;
 }
 
 .container {
+    position: relative;
     background: transparent;
-    border: 2px solid rgba(255,255,255, .2);
-    backdrop-filter:blur(5px);
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(5px);
     width: 500px;
     border-radius: 10px;
     padding: 20px;
     margin: 100px auto 0;
-    margin-top:0%;
-
+    margin-top: 100px;
 }
 
 .input-task {
@@ -36,13 +128,15 @@ body{
 }
 
 .button-add-task {
+    position: absolute;
+    right: 20px;
+    top: 20px;
     border: none;
     border-radius: 5px;
     height: 40px;
     background-color: #3CA13C;
     font-size: 17px;
     padding: 0 15px;
-    float: right;
     cursor: pointer;
     font-weight: 700;
     color: white;
@@ -75,52 +169,21 @@ body{
     cursor: pointer;
 }
 
-
-.task img{
-    height: 30px;
-    opacity: 0; /* Apenas as imagens das tarefas começam invisíveis */
-    transition: opacity 0.5s ease-in-out;
-}
-
-.task:hover img {
-    opacity: 1; /* Tornar visível ao passar o mouse */
-}
-
-
-.done {
-    background-color: #0cb228;
-    text-decoration: line-through;
-}
-.input-task::placeholder{
-    font-size: 15px;
-}
-h1{
-  text-align: center ;  
-  margin-top: 50px;
-  font-size: 50px;
-  color: white;
-margin-bottom: 20px;
-
-}
-.logo {
-    display: block;
-    margin: 20px auto 0; /* Centraliza no topo */
-    width: 400px; /* Ajuste conforme necessário */
-    height: auto; /* Mantém a proporção */
-    z-index: 10;
-}
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 12px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     background: #0dff82ee;
     opacity: 0.9;
     border-radius: 10px;
 }
-::-webkit-scrollbar-track{
+
+::-webkit-scrollbar-track {
     background: #ffffff;
     width: 1px;
 }
+
 @media (max-width: 768px) {
     .container {
         width: 90%;
@@ -135,8 +198,9 @@ margin-bottom: 20px;
 
     .button-add-task {
         width: 100%;
-        margin-top: 10px;
+        margin-top: 0px;
         float: none;
+        position: relative;
     }
 
     .list-tasks {
@@ -144,7 +208,7 @@ margin-bottom: 20px;
     }
 
     .task {
-        flex-direction: row; /* Mantém alinhado em linha, mesmo em telas pequenas */
+        flex-direction: row;
         padding: 10px;
     }
 
@@ -153,7 +217,7 @@ margin-bottom: 20px;
     }
 
     .task p {
-        font-size: 14px; /* Fonte menor em dispositivos móveis */
+        font-size: 14px;
     }
 
     .logo {
@@ -165,4 +229,25 @@ margin-bottom: 20px;
         font-size: 40px;
     }
 }
+.nav-btn-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
 
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #ffffff; 
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color: #6af723; 
+}
