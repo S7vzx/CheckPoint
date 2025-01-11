@@ -10,6 +10,8 @@ erroMensagem.style.color = 'red'
 erroMensagem.style.fontSize = '12px'
 erroMensagem.style.marginTop = '5px'
 
+button.addEventListener('click', adicionarNovaTarefa)
+
 function adicionarNovaTarefa() {
     const tarefa = input.value.trim() // remove espaços extras no início e no final
 
@@ -32,34 +34,44 @@ function adicionarNovaTarefa() {
 }
 
 function mostrarTarefas() {
-    let novaLi = ''
+    listaCompleta.innerHTML = '' // Limpa a lista antes de renderizar
 
     minhaListaDeItens.forEach((item, posicao) => {
-        novaLi =
-            novaLi +
-            `
-        <li class="task ${item.concluida && 'done'}">
-            <img src="./img/outro.png" alt="check-na-tarefa" onclick="concluirTarefa(${posicao})">
-            <p>${item.tarefa}</p>
-            <img src="./img/excluir.png" onclick="deletarItem(${posicao})">
-        </li>
-      `
-    })
+        let novaLi = document.createElement('li')
+        novaLi.classList.add('task')
+        if (item.concluida) {
+            novaLi.classList.add('done')
+        }
 
-    listaCompleta.innerHTML = novaLi
+        let checkButton = document.createElement('img')
+        checkButton.src = './img/outro.png'
+        checkButton.alt = 'check-na-tarefa'
+        checkButton.addEventListener('click', () => concluirTarefa(posicao))
+
+        let tarefaTexto = document.createElement('p')
+        tarefaTexto.textContent = item.tarefa
+
+        let deleteButton = document.createElement('img')
+        deleteButton.src = './img/excluir.png'
+        deleteButton.alt = 'excluir-tarefa'
+        deleteButton.addEventListener('click', () => deletarItem(posicao))
+
+        novaLi.appendChild(checkButton)
+        novaLi.appendChild(tarefaTexto)
+        novaLi.appendChild(deleteButton)
+        listaCompleta.appendChild(novaLi)
+    })
 
     localStorage.setItem('lista', JSON.stringify(minhaListaDeItens))
 }
 
 function concluirTarefa(posicao) {
     minhaListaDeItens[posicao].concluida = !minhaListaDeItens[posicao].concluida
-
     mostrarTarefas()
 }
 
 function deletarItem(posicao) {
     minhaListaDeItens.splice(posicao, 1)
-
     mostrarTarefas()
 }
 
@@ -74,7 +86,6 @@ function recarregarTarefas() {
 }
 
 recarregarTarefas()
-button.addEventListener('click', adicionarNovaTarefa)
 
 erroMensagem.style.color = '#e83b31'; // Cor da mensagem de erro
 erroMensagem.style.fontSize = '14px'; // Tamanho da fonte

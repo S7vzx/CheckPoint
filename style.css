@@ -183,6 +183,9 @@ body.light .label .ball {
     background: #ffffff;
     width: 1px;
 }
+.task img {
+    height: 30px;
+}
 
 @media (max-width: 768px) {
     .container {
@@ -250,4 +253,11 @@ body.light .label .ball {
 
 .nav a:hover {
     color: #6af723; 
+}
+.acess{
+    border-radius: 20px;
+    padding-left: 15px;
+   
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter:blur(5px);
 }
